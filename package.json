@@ -1,5 +1,5 @@
 {
-    "name": "vue-webpack-template",
+    "name": "create-vue-boilerplate",
     "version": "1.0.0",
     "description": "A vue app template using webpack.",
     "main": "index.js",
