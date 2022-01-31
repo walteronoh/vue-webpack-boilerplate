@@ -2,6 +2,8 @@ const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const TerserWebpackPlugin = require("terser-webpack-plugin");
+const CssMinimizerWebpackPlugin = require("css-minimizer-webpack-plugin");
 const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
@@ -50,6 +52,9 @@ module.exports = {
         }),
         new MiniCssExtractPlugin()
     ],
-    devtool: devMode ? "eval-source-map" : "source-map",
+    optimization: {
+        minimizer: [ new TerserWebpackPlugin(), new CssMinimizerWebpackPlugin()]
+    },
+    devtool: devMode ? "eval-source-map" : "hidden-nosources-source-map",
     mode: devMode ? "development" : "production"
 };
